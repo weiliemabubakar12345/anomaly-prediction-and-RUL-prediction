@@ -15,4 +15,4 @@ This repository contains the official implementation pipeline for our integrated
 2. Place the `.txt` files into a subfolder named `Dataset/`.
 3. Run the pipeline script:
    ```bash
-   python "Anomaly prediction_CNN LSTM Autoencoder+Polynomial (1).py"
+   python "Anomaly prediction_CNN LSTM Autoencoder+Polynomial.py"
