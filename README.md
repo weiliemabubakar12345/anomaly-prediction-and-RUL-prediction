@@ -11,7 +11,7 @@ This repository contains the official implementation pipeline for our integrated
 - Sckit-Learn, Pandas, NumPy, Matplotlib, Seaborn
 
 ## Usage
-1. Download the turbofan engine degradation simulation datasets (FD001 - FD004) from the NASA Prognostics Data Repository. In this directory, same dataset is also provided for convinience.
+1. Download the turbofan engine degradation simulation datasets (FD001 - FD004) from the NASA Prognostics Data Repository. In this directory, same dataset are also provided for convinience.
 2. Place the `.txt` files into a subfolder named `Dataset/`.
 3. Run the pipeline script:
    ```bash
