@@ -472,7 +472,7 @@ train_max_cycle.columns = ['unit_number', 'max_cycle']
 train_df = train_df.merge(train_max_cycle, on='unit_number', how='left')
 train_df['RUL_raw'] = train_df['max_cycle'] - train_df['time_in_cycles']
 
-MAX_RUL = 155 
+MAX_RUL = 125 
 train_df['RUL'] = train_df['RUL_raw'].clip(upper=MAX_RUL)
 train_targets = train_df['RUL'].values[sequence_length - 1:]
 
@@ -503,16 +503,13 @@ def critical_zone_loss(y_true, y_pred):
     higher importance to samples with lower RUL to encourage accurate predictions near failure.
     """
     # squarred_error = K.square(y_true - y_pred)
-    delta = y_true - y_pred
-    mse = K.square(delta)
     diff = y_pred - y_true
-    penalty = tf.where(
-        diff > 0,
-        K.minimum(K.exp(diff/30), 5.0),  # More penalty for overestimation
-        K.ones_like(diff)
-    )  # More penalty for overestimation
-    weight = 20.0 / (y_true + 10)  # More weight on smaller RUL values
-    return K.mean(weight * penalty * mse)
+    # Underestimation penalty (diff < 0): denominator 13.0
+    # Overestimation penalty (diff > 0): change denominator from 10.0 to 7.0 or 8.0 to punish harsher
+    penalty = tf.where(diff < 0, 
+                       tf.exp(-diff / 13.0) - 1.0, 
+                       tf.exp(diff / 7.5) - 1.0) 
+    return tf.reduce_mean(penalty)
 # --- STEP 3: Build and Train the Sensitive Regressor ---
 
     
