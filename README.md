@@ -16,3 +16,5 @@ This repository contains the official implementation pipeline for our integrated
 3. Run the pipeline script:
    ```bash
    python "Anomaly prediction_CNN LSTM Autoencoder+Polynomial.py"
+
+4. Other files are baseline anomaly models
