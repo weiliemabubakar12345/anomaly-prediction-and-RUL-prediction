@@ -472,7 +472,7 @@ train_max_cycle.columns = ['unit_number', 'max_cycle']
 train_df = train_df.merge(train_max_cycle, on='unit_number', how='left')
 train_df['RUL_raw'] = train_df['max_cycle'] - train_df['time_in_cycles']
 
-MAX_RUL = 125 
+MAX_RUL = 155 
 train_df['RUL'] = train_df['RUL_raw'].clip(upper=MAX_RUL)
 train_targets = train_df['RUL'].values[sequence_length - 1:]
 
