@@ -10,6 +10,10 @@ This repository contains the official implementation pipeline for our integrated
 - TensorFlow 2.x
 - Sckit-Learn, Pandas, NumPy, Matplotlib, Seaborn
 
+##Notes:
+- Additional codes files such as CNN-LSTM Autoencoder and baseline models is applied for XJTU-SY bearing datasetes
+- dataset availability can be found in not only github but also kaggle (https://www.kaggle.com/datasets/zwming/xjtu-sy 
+)
 ## Usage
 1. Download the turbofan engine degradation simulation datasets (FD001 - FD004) from the NASA Prognostics Data Repository. In this directory, same dataset are also provided for convinience.
 2. Place the `.txt` files into a subfolder named `Dataset/`.
